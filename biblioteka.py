@@ -189,7 +189,7 @@ def google_biblioteka():
 @app.route("/googleresult", methods=["POST"]) # przesyłam inputa i zwracam google result
 def szukaj_google():
     global ksiazki_google
-    key = "AIzaSyB_E4cpGiAChUwbyjqyKxaLYSvFeK7qgQo"
+    key = ""
     url = "https://www.googleapis.com/books/v1/volumes"
     params = {"key": key, "q": ""}
     params["q"]=request.form.get("googlesearch")
