@@ -51,7 +51,8 @@ def formatowanie(lista, zbior):
             if "industryIdentifiers" in zbior[i]['volumeInfo']:
                 if "identifier" in zbior[i]['volumeInfo']['industryIdentifiers'][0]:
                     slownik["ISBN"] = zbior[i]['volumeInfo']['industryIdentifiers'][0]['identifier']
-            lista.append(slownik)
+            if len(slownik)>0:
+                lista.append(slownik)
         else:
             pass
     return lista
@@ -157,6 +158,8 @@ def szukaj(autor, tytul, jezyk, isbn, dataod, datado):
 @app.route("/")
 @app.route("/home", methods=["POST", "GET"])
 def home():
+    global lista_bib
+    lista_bib=[]
     import_biblioteki("https://www.googleapis.com/books/v1/volumes?q=Hobbit")
     formatowanie(lista_bib, dane)
     return render_template("home.html", lista_bib=lista_bib)
