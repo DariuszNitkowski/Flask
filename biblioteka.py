@@ -38,6 +38,7 @@ def formatowanie(lista, zbior):
                 autrs=""
                 for at in zmienna:
                     autrs=autrs+at+" "
+                slownik["Autorzy"]=autrs
             if "publishedDate" in zbior[i]['volumeInfo']:
                 slownik["DataPublikacji"] = zbior[i]['volumeInfo']['publishedDate'][:10]
             if "pageCount" in zbior[i]['volumeInfo']:
